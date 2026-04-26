@@ -1,0 +1,202 @@
+<section class="bg-white min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Breadcrumb -->
+    <div class="mb-8 flex items-center gap-2 text-sm text-gray-500 flex-wrap">
+      <a routerLink="/home" class="hover:text-black transition">Home</a>
+      <span>/</span>
+      <a routerLink="/products" class="hover:text-black transition">Products</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">Product Name</span>
+    </div>
+
+    <!-- Main Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      
+      <!-- Left Side Images -->
+      <div class="space-y-4">
+        <div class="bg-[#f8f8f8] rounded-[28px] overflow-hidden shadow-sm">
+          <img
+            [src]="selectedImage"
+            alt="product"
+            class="w-full h-105 sm:h-130 object-contain transition-transform duration-500 hover:scale-105"
+          />
+        </div>
+
+        <div class="grid grid-cols-4 gap-3">
+          @for (img of prodData.images; track img) {
+          <button class="bg-[#f8f8f8] rounded-2xl overflow-hidden border-2 p-2" 
+            [ngClass]="selectedImage === img ? 'border-amber-500' : 'border-transparent'">
+            <img
+              [src]="img"
+              (click)="selectedImage = img"
+              
+              alt="thumb"
+              class="w-full h-20 object-contain cursor-pointer "
+            />
+          </button>
+          }
+
+        </div>
+      </div>
+
+      <!-- Right Side Content -->
+      <div class="space-y-6">
+        <!-- Category / Brand -->
+        <div class="flex flex-wrap items-center gap-3 text-sm uppercase tracking-[0.2em]">
+          <span class="text-gray-500"> {{prodData.category}} </span>
+          <span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
+          <span class="text-gray-900 font-medium"> {{prodData.brand}} </span>
+        </div>
+
+        <!-- Title -->
+        <div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-light tracking-wide text-[#1f1f1f] leading-tight">
+            {{prodData.title}}
+          </h1>
+        </div>
+
+        <!-- Rating -->
+        <div class="flex flex-wrap items-center gap-4">
+          <!-- <div class="flex items-center gap-1 text-yellow-500 text-lg">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div> -->
+
+          <div class="text-sm text-gray-600">
+                {{prodData.rating}} rating
+            <span class="mx-2">•</span>
+            {{prodData.reviews.length}} reviews
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="flex items-end gap-4 flex-wrap">
+          <span class="text-3xl sm:text-4xl font-semibold text-[#1f1f1f]">
+            {{prodData.price}}$
+          </span>
+
+          <span class="text-sm px-3 py-1 rounded-full bg-red-50 text-red-600 font-medium">
+            {{prodData.discountPercentage}}% OFF
+          </span>
+        </div>
+
+        <!-- Small Info Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-gray-200 p-4">
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">SKU</p>
+            <p class="text-sm font-medium text-gray-900"> {{prodData.sku}} </p>
+          </div>
+
+          <div class="rounded-2xl border border-gray-200 p-4">
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Stock</p>
+            <p class="text-sm font-medium text-green-600"> {{prodData.stock}} </p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="border-t border-gray-200 pt-6">
+          <h2 class="text-lg font-semibold text-[#1f1f1f] mb-3">Description</h2>
+          <p class="text-gray-600 leading-8 text-base">
+           {{prodData.description}}
+          </p>
+        </div>
+
+        <!-- Tags -->
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-3">
+            Tags
+          </h3>
+          @for (tags of prodData.tags; track tags) {
+        <div class="flex flex-wrap gap-2">
+            <span class="px-4 py-2 rounded-full bg-gray-100 text-sm text-gray-700 my-1"> {{tags}} </span>
+          </div>
+          }
+ 
+        </div>
+
+        <!-- Quantity and Buttons -->
+        <div class="border-t border-gray-200 pt-6">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <!-- <div class="flex items-center border border-gray-200 rounded-2xl overflow-hidden w-fit">
+              <button class="w-12 h-12 text-xl hover:bg-gray-100 transition">-</button>
+              <div class="w-14 text-center font-medium text-gray-900">1</div>
+              <button class="w-12 h-12 text-xl hover:bg-gray-100 transition">+</button>
+            </div> -->
+
+            <button
+              class="flex-1 h-12 rounded-2xl bg-black text-white font-medium tracking-wide hover:bg-gray-800 transition"
+            >
+              Add to Cart
+            </button>
+
+            <!-- <button
+              class="flex-1 h-12 rounded-2xl border border-black text-black font-medium tracking-wide hover:bg-black hover:text-white transition"
+            >
+              Buy Now
+            </button> -->
+          </div>
+        </div>
+
+        <!-- Extra Information -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div class="rounded-2xl bg-[#fafafa] p-4 border border-gray-100">
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Shipping</p>
+            <p class="text-sm text-gray-800"> {{prodData.shippingInformation}} </p>
+          </div>
+
+          <div class="rounded-2xl bg-[#fafafa] p-4 border border-gray-100">
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Warranty</p>
+            <p class="text-sm text-gray-800"> {{prodData.warrantyInformation}} </p>
+          </div>
+
+          <div class="rounded-2xl bg-[#fafafa] p-4 border border-gray-100">
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Return Policy</p>
+            <p class="text-sm text-gray-800"> {{prodData.returnPolicy}} </p>
+          </div>
+
+          <div class="rounded-2xl bg-[#fafafa] p-4 border border-gray-100">
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Minimum Order</p>
+            <p class="text-sm text-gray-800">1 piece</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="mt-16 border-t border-gray-200 pt-10">
+      <div class="flex items-center justify-between flex-wrap gap-4 mb-8">
+        <h2 class="text-2xl sm:text-3xl font-light tracking-wide text-[#1f1f1f]">
+          Customer Reviews
+        </h2>
+        <p class="text-sm text-gray-500"> {{prodData.reviews.length}} </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        @for (review of prodData.reviews; track review) {
+                    <div class="rounded-3xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <div>
+              <h3 class="text-base font-semibold text-gray-900"> {{review.reviewerName}} </h3>
+              <p class="text-sm text-gray-500"> {{review.reviewerEmail}} </p>
+            </div>
+            <div class="text-sm text-gray-400"> {{review.date}} </div>
+          </div>
+
+          <!-- <div class="flex items-center gap-1 text-yellow-500 mb-3">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div> -->
+
+          <p class="text-gray-600 leading-7">
+            {{review.comment}}
+          </p>
+        </div>
+        }
+
+
+      </div>
+    </div>
+  </div>
+</section>

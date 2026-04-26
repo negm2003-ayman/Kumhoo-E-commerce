@@ -1,0 +1,73 @@
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 mt-20">
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+
+  @for (prod of myProducts; track prod.id) {
+    <div
+      [routerLink]="['/details', prod.id]"
+      [queryParams]="{ page: currentPage }"
+      class="group bg-white shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden rounded-2xl cursor-pointer"
+    >
+
+      <!-- Image -->
+      <div class="relative bg-[#f8f8f8] flex items-center justify-center overflow-hidden">
+
+        <!-- Add to Cart -->
+        <button
+          (click)="$event.stopPropagation()"
+          class="absolute top-4 left-4 w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/90 backdrop-blur flex items-center justify-center z-10
+          
+          opacity-100 translate-y-0
+          lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0
+          
+          transition-all duration-300 hover:bg-black hover:text-white"
+          aria-label="Add to cart"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 4h2l.4 2M7 13h10l4-8H6.4M7 13L5.4 6M7 13l-1 5h12M10 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
+          </svg>
+        </button>
+
+        <!-- Product Image -->
+        <img
+          [src]="prod.images[0]"
+          alt="product"
+          class="h-55 sm:h-62.5 lg:h-70 object-contain transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      <!-- Content -->
+      <div class="text-center px-4 sm:px-6 py-5 sm:py-6">
+
+        <!-- Stars -->
+        <div class="flex justify-center gap-1 text-yellow-400 text-base sm:text-lg mb-3">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+
+        <!-- Title -->
+        <h3 class="text-lg sm:text-xl lg:text-2xl font-light tracking-wide uppercase text-[#2d2d2d] mb-3 line-clamp-2">
+          {{ prod.title }}
+        </h3>
+
+        <!-- Divider -->
+        <div class="w-10 h-px bg-gray-300 mx-auto mb-4"></div>
+
+        <!-- Price -->
+        <div class="flex items-center justify-center gap-2 text-base sm:text-lg">
+          <span class="text-[#1f2937] font-semibold">${{ prod.price }}</span>
+        </div>
+
+      </div>
+
+    </div>
+  }
+
+</div>
+
+  <div class="flex gap-3 justify-center mt-8">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="py-1 px-2 text-black bg-amber-500 hover:bg-amber-400 transition rounded-full">perv</button>
+    <span> {{currentPage}} / {{TotalPages()}} </span>
+    <button (click)="nextPage()" [disabled]="currentPage === TotalPages()" class="py-1 px-2 text-black bg-amber-500 hover:bg-amber-400 transition rounded-full">next</button>
+  </div>
+</section>

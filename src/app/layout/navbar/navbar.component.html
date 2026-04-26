@@ -1,0 +1,200 @@
+
+
+<nav class="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-gray-50 backdrop-blur-md ">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+
+    <!-- Logo -->
+    <a routerLink="/home" class="flex items-center gap-3">
+      <span class="text-2xl font-extrabold tracking-wide text-dark">
+        Kum<span class="text-amber-500">hOo</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      data-collapse-toggle="navbar-default"
+      type="button"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 text-white transition hover:border-amber-500 hover:text-amber-500 focus:outline-none md:hidden"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="h-6 w-6"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="2"
+          d="M5 7h14M5 12h14M5 17h14"
+        />
+      </svg>
+    </button>
+
+    <!-- Menu -->
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <ul class="mt-4 flex flex-col gap-2 rounded-2xl text-dark  p-4 text-sm font-medium md:mt-0 md:flex-row md:items-center md:gap-8 md:border-0 md:bg-transparent md:p-0">
+
+        <li>
+          <a
+
+            class=" rounded-lg px-3 py-2 transition duration-300  hover:text-amber-500 md:p-0 "
+            routerLink="/home" routerLinkActive="text-amber-500 "
+          >
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/about"
+            routerLinkActive=" text-amber-500 "
+            class="block rounded-lg px-3 py-2  transition duration-300 hover:bg-white/5 hover:text-amber-500 md:p-0 md:hover:bg-transparent"
+          >
+            About
+          </a>
+        </li>
+        
+        <li>
+          <a
+            routerLink="/products"
+            routerLinkActive=" text-amber-500 "
+
+            class="block rounded-lg px-3 py-2  transition duration-300 hover:bg-white/5 hover:text-amber-500 md:p-0 md:hover:bg-transparent"
+          >
+            Shop
+          </a>
+        </li>
+
+        <!-- <li>
+          <a
+            routerLink="/categories"
+            routerLinkActive=" text-amber-500 "
+            class="block rounded-lg px-3 py-2  transition duration-300 hover:bg-white/5 hover:text-amber-500 md:p-0 md:hover:bg-transparent"
+          >
+            Categories
+          </a>
+        </li> -->
+
+<li class="relative">
+  <button
+    id="dropdownNvbarButton"
+    data-dropdown-toggle="dropdownNavbar"
+    class="flex items-center justify-between w-full py-2 px-3 rounded font-medium text-heading md:w-auto hover:text-amber-500 md:p-0"
+  >
+    category
+    <svg
+      class="w-4 h-4 ms-1.5"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m19 9-7 7-7-7"
+      />
+    </svg>
+  </button>
+
+  <!-- Dropdown menu -->
+  <div
+    id="dropdownNavbar"
+    class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg
+           w-[92vw] max-w-180
+           md:w-155
+           lg:w-180"
+  >
+    <ul
+      class="p-3 text-sm text-body font-medium grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2"
+      aria-labelledby="dropdownNvbarButton"
+    >
+      @for (list of categoriesList; track list) {
+      <li>
+        <a
+          class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded wrap-break-words"
+          (click)="productCategory(list)"
+        >
+          {{ list }}
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+</li>
+
+        <!-- <li>
+          <a
+            routerLink="/brands"
+            routerLinkActive=" text-amber-500 "
+            class="block rounded-lg px-3 py-2 transition duration-300 hover:bg-white/5 hover:text-amber-500 md:p-0 md:hover:bg-transparent"
+          >
+            Brands
+          </a>
+        </li> -->
+
+        <li>
+          <a
+            routerLink="/contact"
+            routerLinkActive=" text-amber-500 "
+            class="block rounded-lg px-3 py-2 transition duration-300 hover:bg-white/5 hover:text-amber-500 md:p-0 md:hover:bg-transparent"
+          >
+            Contact
+          </a>
+        </li>
+
+        <!-- Cart -->
+        <li class="relative">
+          <a
+            routerLink="cart"
+            routerLinkActive=" text-amber-500 "
+            class="relative block rounded-lg px-3 py-2 transition duration-300 hover:bg-white/5 hover:text-amber-500 md:p-0 md:hover:bg-transparent"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6h13M10 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"
+              />
+            </svg>
+
+            <span class="absolute -top-2 -right-2 rounded-full bg-amber-500 px-1.5 py-0.5 text-xs font-bold text-black">
+              0
+            </span>
+          </a>
+        </li>
+
+        <!-- CTA Button -->
+        <li class="md:ml-2">
+          <a
+            routerLink="/products"
+            class="inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2.5 font-semibold text-black transition duration-300 hover:scale-105 hover:bg-amber-400"
+          >
+            Shop Now
+          </a>
+        </li>
+
+        <li>
+          <i class="fa-solid fa-arrow-right-from-bracket fa-xl hover:text-amber-500 transition"></i>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

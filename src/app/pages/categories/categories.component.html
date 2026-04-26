@@ -1,0 +1,47 @@
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 mt-20">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    
+    <!-- Card 1 -->
+@for (prod of myProducts; track prod.id) {
+            <div [routerLink]="['/details', prod.id]" class="group bg-white shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden rounded-2xl">
+      <div class="relative bg-[#f8f8f8]   flex items-center justify-center overflow-hidden">
+
+        <button (click)="$event.stopPropagation()"
+          class="absolute top-4 left-4 w-10 h-10 sm:w-11 sm:h-11 bg-white/90  flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-black hover:text-white z-10"
+          aria-label="Add to cart"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l.4 2M7 13h10l4-8H6.4M7 13L5.4 6M7 13l-1 5h12M10 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/>
+          </svg>
+        </button>
+
+        <img
+          [src]='prod.images[0]'
+          alt="Black T-Shirt"
+          class="h-55 sm:h-62.5 lg:h-70 object-contain transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      <div class="text-center px-4 sm:px-6 py-5 sm:py-6">
+        <div class="flex justify-center gap-1 text-yellow-400 text-base sm:text-lg mb-3">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+
+        <h3 class="text-lg sm:text-xl lg:text-2xl font-light tracking-wide uppercase text-[#2d2d2d] mb-3">
+            {{prod.title}}
+        </h3>
+
+        <div class="w-10 h-px] bg-gray-400 mx-auto mb-4"></div>
+
+        <div class="flex items-center justify-center gap-2 text-base sm:text-lg">
+          <span class="text-[#1f2937] font-medium"> {{prod.price}} $</span>
+        </div>
+      </div>
+    </div>
+}
+
+
+
+
+  </div>
+</section>
