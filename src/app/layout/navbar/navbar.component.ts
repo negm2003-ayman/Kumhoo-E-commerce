@@ -20,6 +20,15 @@ export class NavbarComponent {
 
     private readonly categoryService = inject(CategoryService)
     private readonly router=inject(Router)
+    isMenuOpen = false;
+
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    }
+
+    closeMenu() {
+      this.isMenuOpen = false;
+    }
 
 
     productCategory(category:any):void{
