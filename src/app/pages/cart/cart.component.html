@@ -1,1 +1,106 @@
-<p>cart works!</p>
+<section class="min-h-[calc(100vh-90px)] bg-[#f7f7f7] px-4 sm:px-6 lg:px-8 py-10">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="mb-8">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-500">
+        Shopping Cart
+      </p>
+      <h1 class="mt-3 text-3xl sm:text-4xl font-bold text-[#111111]">
+        Your Cart
+      </h1>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- Cart Items -->
+      <div class="lg:col-span-2 space-y-4">
+
+        <!-- Item -->
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-4 sm:p-5 flex flex-col sm:flex-row gap-5">
+          <div class="w-full sm:w-36 h-36 rounded-2xl bg-[#f8f8f8] flex items-center justify-center">
+            <img
+              src="https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/1.webp"
+              alt="product"
+              class="h-28 object-contain"
+            />
+          </div>
+
+          <div class="flex-1">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div>
+                <h3 class="text-xl font-semibold text-[#111111]">
+                  Dior J'adore
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">
+                  Fragrances
+                </p>
+              </div>
+
+              <button class="text-sm font-semibold text-red-500 hover:text-red-600">
+                Remove
+              </button>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between gap-4">
+              <div class="inline-flex items-center rounded-full border border-gray-200 overflow-hidden">
+                <button class="w-10 h-10 flex items-center justify-center hover:bg-gray-100">−</button>
+                <span class="w-10 h-10 flex items-center justify-center font-semibold">1</span>
+                <button class="w-10 h-10 flex items-center justify-center hover:bg-gray-100">+</button>
+              </div>
+
+              <p class="text-lg font-bold text-[#111111]">
+                $89.99
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Summary -->
+      <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 h-fit">
+        <h2 class="text-2xl font-bold text-[#111111]">
+          Order Summary
+        </h2>
+
+        <div class="mt-6 space-y-4 text-sm">
+          <div class="flex justify-between text-gray-500">
+            <span>Subtotal</span>
+            <span class="font-semibold text-[#111111]">$89.99</span>
+          </div>
+
+          <div class="flex justify-between text-gray-500">
+            <span>Shipping</span>
+            <span class="font-semibold text-[#111111]">Free</span>
+          </div>
+
+          <div class="flex justify-between text-gray-500">
+            <span>Discount</span>
+            <span class="font-semibold text-green-600">-$0.00</span>
+          </div>
+        </div>
+
+        <div class="my-6 h-px bg-gray-200"></div>
+
+        <div class="flex justify-between items-center">
+          <span class="text-lg font-bold text-[#111111]">Total</span>
+          <span class="text-2xl font-bold text-[#111111]">$89.99</span>
+        </div>
+
+        <button
+          class="mt-6 w-full h-14 rounded-2xl bg-black text-white font-semibold transition hover:bg-amber-500 hover:text-black"
+        >
+          Checkout
+        </button>
+
+        <a
+          routerLink="/products"
+          class="mt-4 flex justify-center text-sm font-semibold text-amber-500 hover:text-amber-600"
+        >
+          Continue Shopping
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

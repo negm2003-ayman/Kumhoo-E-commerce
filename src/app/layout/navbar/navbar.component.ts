@@ -62,4 +62,11 @@ export class NavbarComponent {
     });
   }
 
+
+
+    signOut(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
 }

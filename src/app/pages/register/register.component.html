@@ -1,1 +1,153 @@
-<p>register works!</p>
+<section class="min-h-[calc(100vh-90px)] bg-[#f7f7f7] px-4 sm:px-6 lg:px-8 py-10 flex items-center justify-center">
+  <div class="w-full max-w-xl bg-white rounded-4xl shadow-sm border border-gray-100 px-6 py-8 sm:px-10 sm:py-12 lg:px-14">
+
+    <div class="mb-9">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-500">
+        Create Account
+      </p>
+
+      <h1 class="mt-4 text-4xl sm:text-5xl font-bold leading-tight text-[#111111]">
+        Register<br />
+        now
+      </h1>
+
+      <p class="mt-4 text-gray-500 text-sm sm:text-base">
+        Create your account and start shopping your favorite products.
+      </p>
+    </div>
+
+    <form class="space-y-5" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-[#111111]">
+          User Name
+        </label>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Enter your user name"
+          class="w-full h-14 rounded-2xl border border-gray-200 bg-white px-5 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+        />
+        @if (registerForm.get('username')?.errors && registerForm.get('username')?.touched) {
+                  <div class="flex p-4 mb-4 text-sm text-fg-warning rounded-base bg-warning-soft border border-warning-subtle" role="alert">
+          <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <span class="sr-only">Success</span>
+          <div>
+            <span class="font-medium">Ensure that these requirements are met:</span>
+              <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+                @if (registerForm.get('username')?.errors?.['required']) {
+                  <li>Name Is Required</li>
+                }
+                @if (registerForm.get('username')?.errors?.['minlength']) {
+                  <li>At least 8 characters (and up to 20 characters)</li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-[#111111]">
+          Email
+        </label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          class="w-full h-14 rounded-2xl border border-gray-200 bg-white px-5 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+        />
+        @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
+          <div class="flex p-4 mb-4 text-sm text-fg-warning rounded-base bg-warning-soft border border-warning-subtle" role="alert">
+            <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <span class="sr-only">Success</span>
+            <div>
+              <span class="font-medium">Ensure that these requirements are met:</span>
+                <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+                  @if (registerForm.get('email')?.errors?.['required']) {
+                    <li>Email Is Required</li>
+                  }
+                  @if (registerForm.get('email')?.errors?.['email']) {
+                    <li>Invalid Email Format</li>
+                  }
+                </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-[#111111]">
+          Phone Number
+        </label>
+        <input
+          type="tel"
+          formControlName="phoneNumber"
+          placeholder="Enter your phone number"
+          class="w-full h-14 rounded-2xl border border-gray-200 bg-white px-5 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+        />
+        @if (registerForm.get('phoneNumber')?.errors && registerForm.get('phoneNumber')?.touched) {
+          <div class="flex p-4 mb-4 text-sm text-fg-warning rounded-base bg-warning-soft border border-warning-subtle" role="alert">
+            <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <span class="sr-only">Success</span>
+            <div>
+              <span class="font-medium">Ensure that these requirements are met:</span>
+                <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+                  @if (registerForm.get('phoneNumber')?.errors?.['required']) {
+                    <li>Phone Number Is Required</li>
+                  }
+                  @if (registerForm.get('phoneNumber')?.errors?.['pattern']) {
+                    <li>Invalid Phone Number Format</li>
+                  }
+                </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-[#111111]">
+          Password
+        </label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          class="w-full h-14 rounded-2xl border border-gray-200 bg-white px-5 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+        />
+        @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
+          <div class="flex p-4 mb-4 text-sm text-fg-warning rounded-base bg-warning-soft border border-warning-subtle" role="alert">
+            <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <span class="sr-only">Success</span>
+            <div>
+              <span class="font-medium">Ensure that these requirements are met:</span>
+                <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+                  @if (registerForm.get('password')?.errors?.['required']) {
+                    <li>Password is Required</li>
+                  }
+                  @if (registerForm.get('password')?.errors?.['pattern']) {
+                    <li>Password Must Start with an Uppercase Letter and Contain at Least 7 Characters</li>
+                  }
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="w-full h-14 rounded-2xl bg-black text-white font-semibold transition hover:bg-amber-500 hover:text-black"
+      >
+        Register
+      </button>
+
+      <p class="text-center text-sm text-gray-500">
+        Already have an account?
+        <a routerLink="/login" class="text-amber-500 font-semibold cursor-pointer">
+          Login
+        </a>
+      </p>
+
+    </form>
+  </div>
+</section>

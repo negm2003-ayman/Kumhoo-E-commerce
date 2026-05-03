@@ -15,16 +15,34 @@
       </p>
     </div>
 
-    <form class="space-y-5">
+    <form class="space-y-5" [formGroup]="registerForm" (ngSubmit)="submitForm()">
       <div>
         <label class="block mb-2 text-sm font-semibold text-[#111111]">
-          Username
+          User Name
         </label>
         <input
           type="text"
-          placeholder="Enter your username"
-          class="w-full h-13 rounded-2xl border border-gray-200 bg-white px-5 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+          formControlName="username"
+          placeholder="Enter your user name"
+          class="w-full h-14 rounded-2xl border border-gray-200 bg-white px-5 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
         />
+        @if (registerForm.get('username')?.errors && registerForm.get('username')?.touched) {
+                  <div class="flex p-4 mb-4 text-sm text-fg-warning rounded-base bg-warning-soft border border-warning-subtle" role="alert">
+          <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <span class="sr-only">Success</span>
+          <div>
+            <span class="font-medium">Ensure that these requirements are met:</span>
+              <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+                @if (registerForm.get('username')?.errors?.['required']) {
+                  <li>Name Is Required</li>
+                }
+                @if (registerForm.get('username')?.errors?.['minlength']) {
+                  <li>At least 8 characters (and up to 20 characters)</li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
       </div>
 
       <div>
@@ -33,9 +51,27 @@
         </label>
         <input
           type="password"
+          formControlName="password"
           placeholder="Enter your password"
-          class="w-full h-13 rounded-2xl border border-gray-200 bg-white px-5 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
+          class="w-full h-14 rounded-2xl border border-gray-200 bg-white px-5 text-sm outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-100"
         />
+        @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
+          <div class="flex p-4 mb-4 text-sm text-fg-warning rounded-base bg-warning-soft border border-warning-subtle" role="alert">
+            <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <span class="sr-only">Success</span>
+            <div>
+              <span class="font-medium">Ensure that these requirements are met:</span>
+                <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+                  @if (registerForm.get('password')?.errors?.['required']) {
+                    <li>Password is Required</li>
+                  }
+                  @if (registerForm.get('password')?.errors?.['pattern']) {
+                    <li>Password Must Start with an Uppercase Letter and Contain at Least 7 Characters</li>
+                  }
+              </ul>
+            </div>
+          </div>
+        }
       </div>
 
       <div class="flex items-center justify-between gap-4 text-sm">
@@ -44,9 +80,9 @@
           Remember me
         </label>
 
-        <a class="text-amber-500 font-semibold hover:text-amber-600 cursor-pointer">
+        <!-- <a class="text-amber-500 font-semibold hover:text-amber-600 cursor-pointer">
           Forgot password?
-        </a>
+        </a> -->
       </div>
 
       <button
