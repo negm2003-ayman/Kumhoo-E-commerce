@@ -13,7 +13,7 @@ export class AuthService {
 
   login(data:object):Observable<any>{
     return this.httpClient.post(`https://dummyjson.com/auth/login` , {
-      data,
+      ...data,
       expiresInMins: 60
     })
   }

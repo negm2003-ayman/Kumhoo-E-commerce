@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule , RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  private readonly Router = inject(Router)
 
 
   registerForm : FormGroup = new FormGroup ({
@@ -19,7 +21,15 @@ export class RegisterComponent {
 
 
   submitForm(){
-    console.log(this.registerForm);
+    if(this.registerForm.invalid){
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+    localStorage.setItem('registeredUser' , JSON.stringify(this.registerForm.value))
+
+    console.log(this.registerForm.value);
+    this.Router.navigate(['/login']);
+
     
   }
 
